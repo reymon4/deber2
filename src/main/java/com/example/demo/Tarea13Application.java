@@ -6,7 +6,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.example.demo.modelo.Automovil;
+import com.example.demo.modelo.Examen;
 import com.example.demo.service.IAutomovilSer;
+import com.example.demo.service.IExamenSer;
 
 @SpringBootApplication
 public class Tarea13Application implements CommandLineRunner {
@@ -14,6 +16,8 @@ public class Tarea13Application implements CommandLineRunner {
 	@Autowired
 	private IAutomovilSer automovilSer;
 	
+	@Autowired
+	private IExamenSer examenSer;
 	public static void main(String[] args) {
 		SpringApplication.run(Tarea13Application.class, args);
 	}
@@ -30,7 +34,7 @@ public class Tarea13Application implements CommandLineRunner {
 		auto1.setModelo("Rio");
 		auto1.setTipo("Combustible");
 		auto1.setClasificacion("Sedán");
-		//this.automovilSer.insertar(auto1);
+		this.automovilSer.insertar(auto1);
 		
 		Automovil auto2 = new Automovil();
 		auto2.setPlaca("PBu3650");
@@ -83,28 +87,47 @@ public class Tarea13Application implements CommandLineRunner {
 		auto6.setClasificacion("Sedán");
 		//this.automovilSer.insertar(auto6);
 		
+//		
+//		//TypedQuery
+//		System.out.println(this.automovilSer.buscarPorAnioQueryTyped(2012));
+//		System.out.println(this.automovilSer.buscarPorModeloQueryTyped("Aventador"));
+//		System.out.println(this.automovilSer.buscarPorPlacaQueryTyped("GHO1110"));
+//		
+//		//NamedQuery
+//		System.out.println(this.automovilSer.buscarPorAnioNamedQuery(2021));
+//		System.out.println(this.automovilSer.buscarPorColorNamedQuery("Blanco"));
+//		System.out.println(this.automovilSer.buscarPorMarcaNamedQuery("Kia"));
+//		
+//		//NativeQuery
+//		System.out.println(this.automovilSer.buscarPorClasificacionNativeQuery("Sedán"));
+//		System.out.println(this.automovilSer.buscarPorTipoNativeQuery("Combustible"));
+//		System.out.println(this.automovilSer.buscarPorModeloNativeQuery("Explorer"));
+//		
+//		//Named Native Query
+//		System.out.println(this.automovilSer.buscarPorClasificacionNativeQueryTyped("Familiar"));
+//		System.out.println(this.automovilSer.buscarPorModeloNativeQueryTyped("Cayman"));
+//		System.out.println(this.automovilSer.buscarPorTipoNativeQueryTyped("Híbrido"));
+//		
+		Examen exa1 = new Examen();
+		exa1.setMateria("Álgebra");
+		exa1.setNota(18.3);
+		//this.examenSer.insertar(exa1);
+		//System.out.println(exa1);
 		
-		//TypedQuery
-		System.out.println(this.automovilSer.buscarPorAnioQueryTyped(2012));
-		System.out.println(this.automovilSer.buscarPorModeloQueryTyped("Aventador"));
-		System.out.println(this.automovilSer.buscarPorPlacaQueryTyped("GHO1110"));
+		Examen exa2 = new Examen();
+		exa2.setMateria("Cálculo");
+		exa2.setNota(15.0);
+	//this.examenSer.insertar(exa2);
 		
-		//NamedQuery
-		System.out.println(this.automovilSer.buscarPorAnioNamedQuery(2021));
-		System.out.println(this.automovilSer.buscarPorColorNamedQuery("Blanco"));
-		System.out.println(this.automovilSer.buscarPorMarcaNamedQuery("Kia"));
+		Examen exa3 = new Examen();
+		exa3.setMateria("Física");
+		exa3.setNota(15.0);
+		this.examenSer.insertar(exa3);
+		System.out.println(this.examenSer.eliminarPorMateria("Física"));
+		System.out.println(this.examenSer.actualizarPorMateria("Álgebra", 15.5));
 		
-		//NativeQuery
-		System.out.println(this.automovilSer.buscarPorClasificacionNativeQuery("Sedán"));
-		System.out.println(this.automovilSer.buscarPorTipoNativeQuery("Combustible"));
-		System.out.println(this.automovilSer.buscarPorModeloNativeQuery("Explorer"));
-		
-		//Named Native Query
-		System.out.println(this.automovilSer.buscarPorClasificacionNativeQueryTyped("Familiar"));
-		System.out.println(this.automovilSer.buscarPorModeloNativeQueryTyped("Cayman"));
-		System.out.println(this.automovilSer.buscarPorTipoNativeQueryTyped("Híbrido"));
-		
-		
+		System.out.println(this.automovilSer.eliminarPorPlaca("PBO3610"));
+		System.out.println(this.automovilSer.actualizarPorPlaca("PBu3650", "Blanco"));
 		
 	}
 

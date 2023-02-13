@@ -36,4 +36,9 @@ public interface IAutomovilSer {
 	public List<Automovil> buscarPorClasificacionNativeQueryTyped(String clasificacion);
 	
 
+
+	//Eliminay y Update
+	public int eliminarPorPlaca(String placa);
+	//Actualizar
+	public int actualizarPorPlaca(String placa, String color); //Parám
 }

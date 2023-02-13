@@ -92,4 +92,16 @@ public class AutomovilServiceImpl implements IAutomovilSer {
 		return this.automovilRepo.buscarPorClasificacionNativeQueryTyped(clasificacion);
 	}
 
+	@Override
+	public int eliminarPorPlaca(String placa) {
+		// TODO Auto-generated method stub
+		return this.automovilRepo.eliminarPorPlaca(placa);
+	}
+
+	@Override
+	public int actualizarPorPlaca(String placa, String color) {
+		// TODO Auto-generated method stub
+		return this.automovilRepo.actualizarPorPlaca(placa, color);
+	}
+
 }

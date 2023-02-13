@@ -129,5 +129,21 @@ public class AutomovilRepoImpl implements IAutomovilRepo{
 		myQuery.setParameter("datoClasificacion", clasificacion);
 		return myQuery.getResultList();
 	}
+	@Override
+	public int eliminarPorPlaca(String placa) {
+		// TODO Auto-generated method stub
+		Query query = this.eM.createQuery("DELETE FROM Automovil e where e.placa=:datoPlaca"); //"JPQL"
+		query.setParameter("datoPlaca", placa);
+		return query.executeUpdate();
+	}
+	@Override
+	public int actualizarPorPlaca(String placa, String color) {
+		// TODO Auto-generated method stub
+		Query query = this.eM.createQuery("UPDATE Automovil e SET e.color=: datoColor WHERE e.placa=:datoPlaca");
+		query.setParameter("datoColor", color);
+		query.setParameter("datoPlaca", placa);
+		
+		return query.executeUpdate();
+	}
 
 }
